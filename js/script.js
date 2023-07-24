@@ -12,3 +12,4 @@ const Ship = (length, hits) => {
   return { length, hits, hit, isSunk };
 };
 
+module.exports = Ship;
