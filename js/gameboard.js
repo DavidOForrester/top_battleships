@@ -38,8 +38,57 @@ const Gameboard = () => {
     }
   };
 
-  const receiveAttack = (coord) => {};
+  const receiveAttack = (coord) => {
+    let hitCheck = false;
+    for (let i = 0; i < destoryerCoord.length; i++) {
+      if (
+        destoryerCoord[i][0] == coord[0] &&
+        destoryerCoord[i][1] == coord[1]
+      ) {
+        destroyer.hit;
+        hitCheck = true;
+      }
+    }
+    for (let i = 0; i < submarineCoord.length; i++) {
+      if (
+        submarineCoord[i][0] == coord[0] &&
+        submarineCoord[i][1] == coord[1]
+      ) {
+        submarine.hit;
+        hitCheck = true;
+      }
+    }
+    for (let i = 0; i < cruiserCoord.length; i++) {
+      if (cruiserCoord[i][0] == coord[0] && cruiserCoord[i][1] == coord[1]) {
+        cruiser.hit;
+        hitCheck = true;
+      }
+    }
+    for (let i = 0; i < battleshipCoord.length; i++) {
+      if (
+        battleshipCoord[i][0] == coord[0] &&
+        battleshipCoord[i][1] == coord[1]
+      ) {
+        battleship.hit;
+        hitCheck = true;
+      }
+    }
+    for (let i = 0; i < carrierCoord.length; i++) {
+      if (carrierCoord[i][0] == coord[0] && carrierCoord[i][1] == coord[1]) {
+        carrier.hit;
+        hitCheck = true;
+      }
+    }
+    if (hitCheck !== true) {
+      return "miss";
+    }
+  };
   return { placeShip, receiveAttack, destoryerCoord };
 };
 
 module.exports = Gameboard;
+
+const gameboard = Gameboard();
+gameboard.placeShip("destoryer", [5, 3], [5, 4]);
+
+console.log(gameboard.receiveAttack([5, 3]));
