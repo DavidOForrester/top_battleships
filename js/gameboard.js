@@ -13,6 +13,8 @@ const Gameboard = () => {
   let submarineCoord = [];
   let destoryerCoord = [];
 
+  let missedCoord = [];
+
   const placeShip = (shipType, coordStart, corrdEnd) => {
     let coordArray = [];
     if (coordStart[0] == corrdEnd[0]) {
@@ -80,15 +82,10 @@ const Gameboard = () => {
       }
     }
     if (hitCheck !== true) {
-      return "miss";
+      missedCoord.push(coord);
     }
   };
-  return { placeShip, receiveAttack, destoryerCoord };
+  return { placeShip, receiveAttack, missedCoord };
 };
 
 module.exports = Gameboard;
-
-const gameboard = Gameboard();
-gameboard.placeShip("destoryer", [5, 3], [5, 4]);
-
-console.log(gameboard.receiveAttack([5, 3]));
