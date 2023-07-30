@@ -1,11 +1,11 @@
 const Ship = require("../js/ship");
 
 const Gameboard = () => {
-  const carrier = Ship(5, 0);
-  const battleship = Ship(4, 0);
-  const cruiser = Ship(3, 0);
-  const submarine = Ship(3, 0);
-  const destroyer = Ship(2, 0);
+  let carrier = Ship(2, 0);
+  let battleship = Ship(2, 0);
+  let cruiser = Ship(2, 0);
+  let submarine = Ship(2, 0);
+  let destroyer = Ship(2, 0);
 
   let carrierCoord = [];
   let battleshipCoord = [];
@@ -47,7 +47,7 @@ const Gameboard = () => {
         destoryerCoord[i][0] == coord[0] &&
         destoryerCoord[i][1] == coord[1]
       ) {
-        destroyer.hit;
+        destroyer.hit();
         hitCheck = true;
       }
     }
@@ -56,13 +56,13 @@ const Gameboard = () => {
         submarineCoord[i][0] == coord[0] &&
         submarineCoord[i][1] == coord[1]
       ) {
-        submarine.hit;
+        submarine.hit();
         hitCheck = true;
       }
     }
     for (let i = 0; i < cruiserCoord.length; i++) {
       if (cruiserCoord[i][0] == coord[0] && cruiserCoord[i][1] == coord[1]) {
-        cruiser.hit;
+        cruiser.hit();
         hitCheck = true;
       }
     }
@@ -71,18 +71,32 @@ const Gameboard = () => {
         battleshipCoord[i][0] == coord[0] &&
         battleshipCoord[i][1] == coord[1]
       ) {
-        battleship.hit;
+        battleship.hit();
         hitCheck = true;
       }
     }
     for (let i = 0; i < carrierCoord.length; i++) {
       if (carrierCoord[i][0] == coord[0] && carrierCoord[i][1] == coord[1]) {
-        carrier.hit;
+        carrier.hit();
         hitCheck = true;
       }
     }
     if (hitCheck !== true) {
       missedCoord.push(coord);
+    }
+
+    checkGameover();
+  };
+
+  const checkGameover = () => {
+    if (
+      destroyer.isSunk() == true &&
+      submarine.isSunk() == true &&
+      cruiser.isSunk() == true &&
+      battleship.isSunk() == true &&
+      carrier.isSunk() == true
+    ) {
+      return "gameover";
     }
   };
   return { placeShip, receiveAttack, missedCoord };
