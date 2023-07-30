@@ -14,6 +14,7 @@ const Gameboard = () => {
   let destoryerCoord = [];
 
   let missedCoord = [];
+  let hitCoord = [];
 
   const placeShip = (shipType, coordStart, corrdEnd) => {
     let coordArray = [];
@@ -49,6 +50,7 @@ const Gameboard = () => {
       ) {
         destroyer.hit();
         hitCheck = true;
+        hitCoord.push(coord);
       }
     }
     for (let i = 0; i < submarineCoord.length; i++) {
@@ -58,12 +60,14 @@ const Gameboard = () => {
       ) {
         submarine.hit();
         hitCheck = true;
+        hitCoord.push(coord);
       }
     }
     for (let i = 0; i < cruiserCoord.length; i++) {
       if (cruiserCoord[i][0] == coord[0] && cruiserCoord[i][1] == coord[1]) {
         cruiser.hit();
         hitCheck = true;
+        hitCoord.push(coord);
       }
     }
     for (let i = 0; i < battleshipCoord.length; i++) {
@@ -73,12 +77,14 @@ const Gameboard = () => {
       ) {
         battleship.hit();
         hitCheck = true;
+        hitCoord.push(coord);
       }
     }
     for (let i = 0; i < carrierCoord.length; i++) {
       if (carrierCoord[i][0] == coord[0] && carrierCoord[i][1] == coord[1]) {
         carrier.hit();
         hitCheck = true;
+        hitCoord.push(coord);
       }
     }
     if (hitCheck !== true) {
@@ -99,7 +105,7 @@ const Gameboard = () => {
       return "gameover";
     }
   };
-  return { placeShip, receiveAttack, missedCoord };
+  return { placeShip, receiveAttack, missedCoord, hitCoord };
 };
 
 module.exports = Gameboard;
