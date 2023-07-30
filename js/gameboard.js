@@ -1,10 +1,10 @@
 const Ship = require("../js/ship");
 
 const Gameboard = () => {
-  let carrier = Ship(2, 0);
-  let battleship = Ship(2, 0);
-  let cruiser = Ship(2, 0);
-  let submarine = Ship(2, 0);
+  let carrier = Ship(5, 0);
+  let battleship = Ship(4, 0);
+  let cruiser = Ship(3, 0);
+  let submarine = Ship(3, 0);
   let destroyer = Ship(2, 0);
 
   let carrierCoord = [];
@@ -85,7 +85,7 @@ const Gameboard = () => {
       missedCoord.push(coord);
     }
 
-    checkGameover();
+    return checkGameover();
   };
 
   const checkGameover = () => {
