@@ -2,6 +2,7 @@ const Gameboard = require("../js/gameboard");
 
 const Player = () => {
   let gameboard = Gameboard();
+  let gameOverCheck = null
 
   const receiveMove = (type, coord) => {
     if (type == "AI") {
@@ -9,9 +10,9 @@ const Player = () => {
       let x = Math.floor(Math.random() * 10);
       let y = Math.floor(Math.random() * 10);
 
-      let gameOverCheck = gameboard.receiveAttack([x, y]);
+      gameOverCheck = gameboard.receiveAttack([x, y]);
     } else {
-      let gameOverCheck = gameboard.receiveAttack(coord);
+      gameOverCheck = gameboard.receiveAttack(coord);
     }
 
     if(gameOverCheck == "gameover") {
