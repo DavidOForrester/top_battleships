@@ -12,7 +12,7 @@ const Player = () => {
 
       coord = [x, y];
     }
-    
+
     let guesses = gameboard.missedCoord.concat(gameboard.hitCoord);
 
     for (let i = 0; i < guesses.length; i++) {
@@ -23,25 +23,13 @@ const Player = () => {
 
     if (match == "No") {
       gameOverCheck = gameboard.receiveAttack(coord);
+    } else {
+      return "Guess again"
     }
-
-    if (gameOverCheck == "gameover") {
-      return gameOverCheck;
-    }
-    console.log(match)
   };
 
-  return { receiveMove };
+  return { receiveMove, gameOverCheck };
 };
 
 module.exports = Player;
 
-let player1 = Player();
-let AIplayer = Player();
-
-/*player1.receiveMove("AI");
-player1.receiveMove("AI");
-player1.receiveMove("AI");
-player1.receiveMove("AI");*/
-AIplayer.receiveMove(null, [0, 0]);
-AIplayer.receiveMove(null, [0, 0]);
