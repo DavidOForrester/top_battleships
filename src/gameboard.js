@@ -1,4 +1,4 @@
-const Ship = require("../js/ship");
+import Ship from "./ship";
 
 const Gameboard = () => {
   let carrier = Ship(5, 0);
@@ -108,4 +108,4 @@ const Gameboard = () => {
   return { placeShip, receiveAttack, missedCoord, hitCoord };
 };
 
-module.exports = Gameboard;
+export default Gameboard;

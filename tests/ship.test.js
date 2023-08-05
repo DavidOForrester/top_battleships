@@ -1,4 +1,4 @@
-const Ship = require("../js/ship");
+import Ship from "../js/ship";
 
 test("Create ship factory", () => {
   const destroyer = Ship(3, 0);

@@ -1,4 +1,4 @@
-const Gameboard = require("../js/gameboard");
+import Gameboard from "../js/gameboard";
 
 test("Play a game to completion", () => {
   const gameboard = Gameboard();

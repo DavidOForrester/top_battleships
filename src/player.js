@@ -1,4 +1,4 @@
-const Gameboard = require("../js/gameboard");
+import Gameboard from "./gameboard";
 
 const Player = () => {
   let gameboard = Gameboard();
@@ -31,5 +31,5 @@ const Player = () => {
   return { receiveMove, gameOverCheck };
 };
 
-module.exports = Player;
+export default Player;
 

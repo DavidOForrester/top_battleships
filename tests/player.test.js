@@ -1,4 +1,4 @@
-const Player = require("../js/player");
+import Player from "../js/player";
 
 test("Guess again", () => {
   let player = Player();
