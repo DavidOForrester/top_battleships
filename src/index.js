@@ -1,6 +1,9 @@
 import _ from "lodash";
 import "./style.css";
 import Player from "./player.js";
+import * as dom from "./dom.js"
+
+dom.pageLoad()
 
 const player1 = Player();
 const player2 = Player();
