@@ -2,7 +2,6 @@ import Gameboard from "./gameboard";
 
 const Player = () => {
   let gameboard = Gameboard();
-  let gameOverCheck = null;
 
   const receiveMove = (type, coord) => {
     let match = "No";
@@ -22,14 +21,13 @@ const Player = () => {
     }
 
     if (match == "No") {
-      gameOverCheck = gameboard.receiveAttack(coord);
+      gameboard.receiveAttack(coord);
     } else {
-      return "Guess again"
+      return "Guess again";
     }
   };
 
-  return { receiveMove, gameOverCheck };
+  return { receiveMove, gameboard };
 };
 
 export default Player;
-

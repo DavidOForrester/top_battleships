@@ -1,4 +1,5 @@
 import Ship from "./ship";
+import * as dom from "./dom.js";
 
 const Gameboard = () => {
   let carrier = Ship(5, 0);
@@ -39,6 +40,8 @@ const Gameboard = () => {
     } else if (shipType == "destoryer") {
       destoryerCoord = coordArray;
     }
+
+    dom.updateDomForShip(coordArray);
   };
 
   const receiveAttack = (coord) => {
@@ -103,9 +106,11 @@ const Gameboard = () => {
       carrier.isSunk() == true
     ) {
       return "gameover";
+    } else {
+      return "play on";
     }
   };
-  return { placeShip, receiveAttack, missedCoord, hitCoord };
+  return { placeShip, receiveAttack, checkGameover, missedCoord, hitCoord };
 };
 
 export default Gameboard;

@@ -25,15 +25,21 @@
   height: 380px;
   width: 380px;
   background-color: black;
-  display: grid; 
+  display: grid;
   grid-template-columns: repeat(10, 38px);
   grid-template-rows: repeat(10, 38px);
 }
 
-#game-cell {
+.game-cell {
   height: 36px;
   width: 36px;
   background-color: white;
+}
+
+.ship-cell {
+  height: 36px;
+  width: 36px;
+  background-color: blue;
 }
 
 #footer {
