@@ -1,4 +1,4 @@
-export function pageLoad() {
+export function pageLoad(player1, player2) {
   //game div
   const game = document.createElement("div");
   game.id = "game";
@@ -41,6 +41,15 @@ export function pageLoad() {
       const cell = document.createElement("div");
       cell.id = "enemy board: " + i + ", " + j;
       cell.className = "game-cell";
+      cell.addEventListener("click", () => {
+        let moveStatus = player2.receiveMove([i, j]);
+        if (moveStatus == "hit") {
+          cell.setAttribute("class", "hit-cell");
+        } else if (moveStatus == "miss") {
+          cell.setAttribute("class", "miss-cell");
+        } else if (moveStatus == "Guess again") {
+        }
+      });
       enemyGameboard.appendChild(cell);
     }
   }

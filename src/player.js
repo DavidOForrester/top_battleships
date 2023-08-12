@@ -1,11 +1,12 @@
 import Gameboard from "./gameboard";
 
-const Player = () => {
-  let gameboard = Gameboard();
+const Player = (type) => {
+  let gameboard = Gameboard(type);
+  let playerType = type;
 
-  const receiveMove = (type, coord) => {
+  const receiveMove = (coord) => {
     let match = "No";
-    if (type == "AI") {
+    if (playerType == "Human") {
       let x = Math.floor(Math.random() * 10);
       let y = Math.floor(Math.random() * 10);
 
@@ -21,7 +22,7 @@ const Player = () => {
     }
 
     if (match == "No") {
-      gameboard.receiveAttack(coord);
+      return gameboard.receiveAttack(coord);
     } else {
       return "Guess again";
     }

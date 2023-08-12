@@ -1,7 +1,7 @@
 import Ship from "./ship";
 import * as dom from "./dom.js";
 
-const Gameboard = () => {
+const Gameboard = (type) => {
   let carrier = Ship(5, 0);
   let battleship = Ship(4, 0);
   let cruiser = Ship(3, 0);
@@ -41,7 +41,9 @@ const Gameboard = () => {
       destoryerCoord = coordArray;
     }
 
-    dom.updateDomForShip(coordArray);
+    if (type == "Human") {
+      dom.updateDomForShip(coordArray);
+    }
   };
 
   const receiveAttack = (coord) => {
@@ -54,6 +56,7 @@ const Gameboard = () => {
         destroyer.hit();
         hitCheck = true;
         hitCoord.push(coord);
+        return "hit";
       }
     }
     for (let i = 0; i < submarineCoord.length; i++) {
@@ -64,6 +67,7 @@ const Gameboard = () => {
         submarine.hit();
         hitCheck = true;
         hitCoord.push(coord);
+        return "hit";
       }
     }
     for (let i = 0; i < cruiserCoord.length; i++) {
@@ -71,6 +75,7 @@ const Gameboard = () => {
         cruiser.hit();
         hitCheck = true;
         hitCoord.push(coord);
+        return "hit";
       }
     }
     for (let i = 0; i < battleshipCoord.length; i++) {
@@ -81,6 +86,7 @@ const Gameboard = () => {
         battleship.hit();
         hitCheck = true;
         hitCoord.push(coord);
+        return "hit";
       }
     }
     for (let i = 0; i < carrierCoord.length; i++) {
@@ -88,13 +94,13 @@ const Gameboard = () => {
         carrier.hit();
         hitCheck = true;
         hitCoord.push(coord);
+        return "hit";
       }
     }
     if (hitCheck !== true) {
       missedCoord.push(coord);
+      return "miss";
     }
-
-    return checkGameover();
   };
 
   const checkGameover = () => {
