@@ -56,6 +56,9 @@ const Gameboard = (type) => {
         destroyer.hit();
         hitCheck = true;
         hitCoord.push(coord);
+        if(type == "Human") {
+          dom.updateDomAIMove("hit", coord)
+        }
         return "hit";
       }
     }
@@ -67,6 +70,9 @@ const Gameboard = (type) => {
         submarine.hit();
         hitCheck = true;
         hitCoord.push(coord);
+        if(type == "Human") {
+          dom.updateDomAIMove("hit", coord)
+        }
         return "hit";
       }
     }
@@ -75,6 +81,9 @@ const Gameboard = (type) => {
         cruiser.hit();
         hitCheck = true;
         hitCoord.push(coord);
+        if(type == "Human") {
+          dom.updateDomAIMove("hit", coord)
+        }
         return "hit";
       }
     }
@@ -86,6 +95,9 @@ const Gameboard = (type) => {
         battleship.hit();
         hitCheck = true;
         hitCoord.push(coord);
+        if(type == "Human") {
+          dom.updateDomAIMove("hit", coord)
+        }
         return "hit";
       }
     }
@@ -94,11 +106,17 @@ const Gameboard = (type) => {
         carrier.hit();
         hitCheck = true;
         hitCoord.push(coord);
+        if(type == "Human") {
+          dom.updateDomAIMove("hit", coord)
+        }
         return "hit";
       }
     }
     if (hitCheck !== true) {
       missedCoord.push(coord);
+      if(type == "Human") {
+        dom.updateDomAIMove("miss", coord)
+      }
       return "miss";
     }
   };

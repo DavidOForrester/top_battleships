@@ -23,6 +23,7 @@ export function pageLoad(player1, player2) {
   myGameboard.id = "my-gameboard";
   main.appendChild(myGameboard);
 
+  //Human gameboard
   for (let i = 0; i < 10; i++) {
     for (let j = 0; j < 10; j++) {
       const cell = document.createElement("div");
@@ -36,6 +37,7 @@ export function pageLoad(player1, player2) {
   enemyGameboard.id = "enemy-gameboard";
   main.appendChild(enemyGameboard);
 
+  //AI gameboard
   for (let i = 0; i < 10; i++) {
     for (let j = 0; j < 10; j++) {
       const cell = document.createElement("div");
@@ -43,10 +45,13 @@ export function pageLoad(player1, player2) {
       cell.className = "game-cell";
       cell.addEventListener("click", () => {
         let moveStatus = player2.receiveMove([i, j]);
+        console.log("human: " + moveStatus);
         if (moveStatus == "hit") {
           cell.setAttribute("class", "hit-cell");
+          console.log("AI: " + player1.receiveMove());
         } else if (moveStatus == "miss") {
           cell.setAttribute("class", "miss-cell");
+          console.log("AI: " + player1.receiveMove())
         } else if (moveStatus == "Guess again") {
         }
       });
@@ -63,5 +68,22 @@ export function updateDomForShip(coordArray) {
     const gameCell = document.getElementById("my board: " + x + ", " + y);
 
     gameCell.setAttribute("class", "ship-cell");
+  }
+}
+
+export function updateDomAIMove(status, coord) {
+  let x = coord[0]
+  let y = coord[1]
+
+  if(status == "hit") {
+    const gameCell = document.getElementById("my board: " + x + ", " + y);
+
+    gameCell.setAttribute("class", "hit-cell");
+  } else if (status == "miss") {
+    const gameCell = document.getElementById("my board: " + x + ", " + y);
+
+    gameCell.setAttribute("class", "miss-cell");
+  } else {
+    console.log("weird things happening")
   }
 }
