@@ -24,6 +24,9 @@ const Player = (type) => {
     if (match == "No") {
       return gameboard.receiveAttack(coord);
     } else {
+      if (type == "Human") {
+        receiveMove();
+      }
       return "Guess again";
     }
   };

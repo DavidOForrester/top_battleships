@@ -45,13 +45,12 @@ export function pageLoad(player1, player2) {
       cell.className = "game-cell";
       cell.addEventListener("click", () => {
         let moveStatus = player2.receiveMove([i, j]);
-        console.log("human: " + moveStatus);
         if (moveStatus == "hit") {
           cell.setAttribute("class", "hit-cell");
-          console.log("AI: " + player1.receiveMove());
+          player1.receiveMove();
         } else if (moveStatus == "miss") {
           cell.setAttribute("class", "miss-cell");
-          console.log("AI: " + player1.receiveMove())
+          player1.receiveMove()
         } else if (moveStatus == "Guess again") {
         }
       });
